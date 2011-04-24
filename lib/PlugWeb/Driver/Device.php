@@ -13,7 +13,7 @@ namespace PlugWeb\Driver;
  * @author Dirk Engels (http://www.dirkengels.com)
  *
  */
-class Plugwise_Driver_Device {
+class Device {
 	protected $_mac = null;
 	protected $_serial = null;
 	protected $_request = null;
@@ -36,7 +36,7 @@ class Plugwise_Driver_Device {
 	 * 
 	 * Sets the mac addres
 	 * @param string $mac
-	 * @return Plugwise_Driver_Device
+	 * @return \PlugWeb\Driver\Device
 	 */
 	public function setMac($mac) {
 		$this->_mac = $mac;
@@ -46,11 +46,11 @@ class Plugwise_Driver_Device {
 	/**
 	 * 
 	 * Gets or initailizes the serial controller object
-	 * @return Plugwise_Driver_Serial
+	 * @return \PlugWeb\Driver\Serial
 	 */
 	public function getSerial() {
 		if ($this->_serial === null) {
-			$this->_serial = new Plugwise_Driver_Serial('/dev/ttyUSB0');
+			$this->_serial = new \PlugWeb\Driver\Serial('/dev/ttyUSB0');
  		}
 		return $this->_serial;
 	}
@@ -59,10 +59,10 @@ class Plugwise_Driver_Device {
 	 * 
 	 * Sets or initializes the serial controller object
 	 * @param Plugwise_Serial $serial
-	 * @return Plugwise_Driver_Device
+	 * @return \PlugWeb\Driver\Device
 	 */
 	public function setSerial($serial) {
-		if (is_subclass_of($serial, 'Plugwise_Driver_Serial')) {
+		if (is_subclass_of($serial, '\PlugWeb\Driver\Serial')) {
 			$this->_serial = $serial;
 		}
 		return $this;
@@ -71,11 +71,11 @@ class Plugwise_Driver_Device {
 	/**
 	 * 
 	 * Gets or initailizes the serial controller request object
-	 * @return Plugwise_Driver_Request
+	 * @return \PlugWeb\Driver\Request
 	 */
 	public function getRequest() {
 		if ($this->_request === null) {
-			$this->_request = new Plugwise_Driver_Request();
+			$this->_request = new \PlugWeb\Driver\Request();
  		}
 		return $this->_request;
 	}
@@ -83,11 +83,11 @@ class Plugwise_Driver_Device {
 	/**
 	 * 
 	 * Sets or initializes the serial controller request object
-	 * @param Plugwise_Driver_Request $request
-	 * @return Plugwise_Driver_Device
+	 * @param \PlugWeb\Driver\Request $request
+	 * @return \PlugWeb\Driver\Device
 	 */
 	public function setRequest($request) {
-		if (is_subclass_of($request, 'Plugwise_Driver_Request')) {
+		if (is_subclass_of($request, '\PlugWeb\Driver\Request')) {
 			$this->_request = $request;
 		}
 		return $this;
@@ -96,11 +96,11 @@ class Plugwise_Driver_Device {
 	/**
 	 * 
 	 * Gets or initailizes the serial controller response object
-	 * @return Plugwise_Driver_Response
+	 * @return \PlugWeb\Driver\Response
 	 */
 	public function getResponse() {
 		if ($this->_response === null) {
-			$this->_response = new Plugwise_Driver_Response();
+			$this->_response = new \PlugWeb\Driver\Response();
  		}
 		return $this->_response;
 	}
@@ -108,11 +108,11 @@ class Plugwise_Driver_Device {
 	/**
 	 * 
 	 * Sets or initializes the serial controller response object
-	 * @param Plugwise_Driver_Response $response
-	 * @return Plugwise_Driver_Device
+	 * @param \PlugWeb\Driver\Response $response
+	 * @return \PlugWeb\Driver\Device
 	 */
 	public function setResponse($response) {
-		if (is_subclass_of($response, 'Plugwise_Driver_Response')) {
+		if (is_subclass_of($response, '\PlugWeb\Driver\Response')) {
 			$this->_response = $response;
 		}
 		return $this;
@@ -241,7 +241,7 @@ class Plugwise_Driver_Device {
 		$out['calibration'] = $calibration['data'];
 		$out['data']['kwh'] = $this->_pulsesToKwh(
 			1, 
-			$out['data']['pulsesInterval1'], 
+			$calibration['data']['pulsesInterval1'], 
 			$calibration['data']['offRuis'], 
 			$calibration['data']['offTot'], 
 			$calibration['data']['gainA'], 

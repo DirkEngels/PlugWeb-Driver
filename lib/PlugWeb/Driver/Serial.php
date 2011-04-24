@@ -4,7 +4,7 @@ namespace PlugWeb\Driver;
 
 /**
  * 
- * The Plugwise_Driver_Serial object is responsible for sending and receiving
+ * The \Plugwise\Driver\Serial object is responsible for sending and receiving
  * data from and to the USB serial device (plugwise stick). It handles setting
  * up a connection with the device and setting its parameters such as baudrate.
  * 
@@ -14,7 +14,7 @@ namespace PlugWeb\Driver;
  * @author Dirk Engels (http://www.dirkengels.com)
  *
  */
-class Plugwise_Driver_Serial {
+class Serial {
 	protected $_device = null;
 	protected $_handle = null;
 	protected $_buffer = '';
@@ -23,7 +23,7 @@ class Plugwise_Driver_Serial {
 	 * 
 	 * The constructor only handles setting the device. 
 	 * 
-	 * @param Plugwise_Driver_Device $device
+	 * @param \Plugwise\Driver\Device $device
 	 */
 	public function __construct($device) {
 		$this->setDevice($device);
@@ -41,7 +41,7 @@ class Plugwise_Driver_Serial {
 	
 	/**
 	 * 
-	 * Gets the Plugwise_Driver_Device
+	 * Gets the \Plugwise\Driver\Device
 	 */
 	public function getDevice() {
 		return $this->_device;
@@ -49,8 +49,8 @@ class Plugwise_Driver_Serial {
 	
 	/**
 	 * 
-	 * Sets the Plugwise_Driver_Device
-	 * @param Plugwise_Driver_Device $device
+	 * Sets the \Plugwise\Driver\Device
+	 * @param \Plugwise\Driver\Device $device
 	 */
 	public function setDevice($device) {
 		$this->_device = $device;

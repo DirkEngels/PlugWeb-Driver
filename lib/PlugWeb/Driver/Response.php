@@ -13,7 +13,7 @@ namespace PlugWeb\Driver;
  * @author Dirk Engels (http://www.dirkengels.com)
  *
  */
-class Plugwise_Driver_Response {
+class Response {
 
 	/**
 	 * 
@@ -26,7 +26,6 @@ class Plugwise_Driver_Response {
 	public function readString($string) {
  		$responseAction = substr($string, 4, 4);
 		$string = substr($string, 8);
-		echo $string . "\n\n";
 		switch($responseAction) {
 			case '0000':
 				return $this->_processAcknowledge($string);

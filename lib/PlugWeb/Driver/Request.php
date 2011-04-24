@@ -13,7 +13,7 @@ namespace PlugWeb\Driver;
  * @author Dirk Engels (http://www.dirkengels.com)
  *
  */
-class Plugwise_Driver_Request {
+class Request {
 	const MAC_PREFIX = '000D6F0000';
 	const ACTION_STICK_INIT = '000A';
 	const ACTION_POWER_INFO = '0012';

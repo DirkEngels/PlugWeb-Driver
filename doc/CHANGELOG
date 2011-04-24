@@ -2,11 +2,14 @@
 CHANGELOG
 =========
 
+- add command line tool
+
 version 0.2
 -----------
 - initial unit tests
-
+- add test script for single device
 
 version 0.1
 ===========
-- initial class structure
++ initial import
+- refactor namespaces

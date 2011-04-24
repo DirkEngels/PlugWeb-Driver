@@ -1,12 +1,14 @@
 <?php
 
+namespace Plugwise\Driver;
+
 /**
  * 
  * Unit Test for Plugwise Driver Request
  * @author dirk
  *
  */
-class Plugwise_Driver_Request_Test extends PHPUnit_Framework_Testcase {
+class RequestTest extends \PHPUnit_Framework_Testcase {
 	protected $_request;
 	
 	protected function setUp() {
@@ -20,12 +22,12 @@ class Plugwise_Driver_Request_Test extends PHPUnit_Framework_Testcase {
 	 * Unit Tests
 	 */
 	public function testActionInitStick() {
-		$out = "\x05\x05\x03\x03 000AB43C \x0d\x0a";
+		$out = "\x05\x05\x03\x03000AB43C\x0d\x0a";
 		
 		$this->assertEquals($out, $this->_request->actionInitStick());
 	}
 	public function testActionSwitchOn() {
-		$out = "\x05\x05\x03\x03 000AB43C \x0d\x0a";
+		$out = "\x05\x05\x03\x03000AB43C\x0d\x0a";
 		
 		$this->assertEquals($out, $this->_request->actionInitStick());
 	}
@@ -35,7 +37,7 @@ class Plugwise_Driver_Request_Test extends PHPUnit_Framework_Testcase {
 	 */
 	public function testMakeCrcCheckSum($string, $expectedCrc) {
 		
-		$computedCrc = $$this->_request->makeCrcCheckSum($string);
+		$computedCrc = $this->_request->makeCrcCheckSum($string);
 		
 		$this->assertEquals($expectedCrc, $computedCrc);
 	}

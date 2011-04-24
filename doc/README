@@ -1,3 +1,49 @@
 
 PlugWeb Driver (PHP)
 ====================
+
+* Introduction
+* Command Line Utility
+* PHP API Usage
+* Contact Information
+
+
+Introduction
+------------
+The PlugWeb-Driver package provides a PHP API for monitoring and controlling
+PlugWise devices. This package also contains a command tool utility for
+starting single actions from the command line.
+
+
+Command Line Utility
+--------------------
+A command line utility is provided to execute single actions, such as switching
+devices on/of or request device information.
+
+  sudo ./bin/plugweb-driver -m '729310' -a 'switch-on'
+  sudo ./bin/plugweb-driver -m '729310' -a 'switch-off'
+
+  sudo ./bin/plugweb-driver -m '729310' -a 'info'
+  sudo ./bin/plugweb-driver -m '729310' -a 'status'
+
+
+PHP API Usage
+-------------
+See the example below to send commands to a PlugWise device from PHP.
+
+  $mac = '729310';
+  $device = new \PlugWeb\Driver\Device($mac);
+  $device->switchOn();
+  $deviceInfo = $device->deviceInfo();
+  $powerInfo = $device->powerInfo();
+
+  print_r($deviceInfo);
+  print_r($powerInfo);
+
+
+Contact Information
+-------------------
+For more info about the PlugWeb Driver see the PlugWeb website:
+
+GitHub:		https://github.com/DirkEngels/PlugWeb-Driver
+Blog:		http://blog.dirkengels.com/category/plugweb/

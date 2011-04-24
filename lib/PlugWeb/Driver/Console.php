@@ -2,6 +2,17 @@
 
 namespace PlugWeb\Driver;
 
+/**
+ * 
+ * The Console object provides the functionalities to run the driver from the
+ * command line. A small executable script is used to instantiate this class. 
+ *  
+ * @package PlugWeb
+ * @subpackage Driver
+ * @copyright Copyright (C) 2010 Dirk Engels Websolutions. All rights reserved.
+ * @author Dirk Engels (http://www.dirkengels.com)
+ *
+ */
 class Console {
 	
 	protected $_consoleOpts = null;

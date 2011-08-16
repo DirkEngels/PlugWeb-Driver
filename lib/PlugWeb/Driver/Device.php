@@ -232,11 +232,11 @@ class Device {
 	 * @return array
 	 */
 	public function powerInfo() {
-		$calibration = $this->deviceCalibration();
-		
+
 		$input = $this->getRequest()->actionPowerInfo($this->_mac);
-		$out = $this->sendString($input);
-		
+		$out = $this->sendString($input, true);
+		$calibration = $this->deviceCalibration();
+
 		// Add KWH
 		$out['calibration'] = $calibration['data'];
 		$out['data']['kwh'] = $this->_pulsesToKwh(

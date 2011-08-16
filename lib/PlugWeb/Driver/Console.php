@@ -83,6 +83,10 @@ class Console {
 			case 'switch-off':
 				$data = $device->powerSwitchOff();
 				break;
+			case 'power':
+				$data = $device->powerInfo();
+				$this->_printData($data);
+				break;
 			case 'info':
 				$data = $device->deviceInfo();
 				$this->_printData($data);

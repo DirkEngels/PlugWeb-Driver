@@ -7,7 +7,12 @@ $mac = '76CE03';
 $mac = '729310';
 
 $device = new \PlugWeb\Driver\Device($mac);
+#echo var_dump($device);
 $device->initStick();
-$device->powerSwitch(true);
-sleep(1);
-$device->powerSwitch(false);
+while (true) {
+	$device->powerSwitch(true);
+	sleep(3);
+	$device->powerSwitch(false);
+	sleep(3);
+}
+

@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
 <phpunit bootstrap="./bootstrap.php" colors="true">
-  <log type="coverage-html" target="../logs/" charset="UTF-8"
-    lowUpperBound="35" highLowerBound="70"/>
-
-  <testsuites>
-    <testsuite name="lib">
+    <testsuite name="PlugWeb-Driver">
       <directory>./lib/</directory>
     </testsuite>
-  </testsuites>
 
 </phpunit>

@@ -103,7 +103,7 @@ class Serial {
      */
     protected function _init() {
         // Initialize baudrate
-        $return = $this->_exec("stty -F " . $this->_device . " 15200", $output);
+        $return = $this->_exec("stty -F " . $this->_device . " 15200", $returnData);
 
         $this->_handle = fopen($this->_device, "r+b");
         stream_set_blocking($this->_handle, 0);

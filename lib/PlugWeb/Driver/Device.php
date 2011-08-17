@@ -152,7 +152,7 @@ class Device {
      * @return array
      */
     public function initStick() {
-        $input = $this->getRequest()->actionInitStick();        
+        $input = $this->getRequest()->actionInitStick();
         return $this->sendString($input, TRUE);
     }
 
@@ -303,5 +303,5 @@ class Device {
         $result = ($pulses/ 1) / 468.9385193;
         return $result;
     }
-    
+
 }

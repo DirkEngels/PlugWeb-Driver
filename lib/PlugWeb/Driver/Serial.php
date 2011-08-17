@@ -16,8 +16,8 @@ namespace PlugWeb\Driver;
  */
 class Serial {
 
-    protected $_device = null;
-    protected $_handle = null;
+    protected $_device = NULL;
+    protected $_handle = NULL;
     protected $_buffer = '';
 
 
@@ -37,7 +37,7 @@ class Serial {
      * Closes the resource handle with the device.
      */
     public function __destruct() {
-        if ($this->_handle !== null) {
+        if ($this->_handle !== NULL) {
             fclose($this->_handle);
         }
     }
@@ -76,7 +76,7 @@ class Serial {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        usleep((int) (0.1 * 1000000));
+        usleep( (int)(0.1 * 1000000) );
         return $charsWritten;
     }
 
@@ -90,7 +90,7 @@ class Serial {
         $content = '';
         while(strlen($content)<=$count) {
             $content .= fread($this->_handle, 8192);
-            usleep((int) (0.1 * 1000000));
+            usleep( (int)(0.1 * 1000000) );
         }
 
         return $content;
@@ -103,10 +103,10 @@ class Serial {
      */
     protected function _init() {
         // Initialize baudrate
-        $ret = $this->_exec("stty -F " . $this->_device . " 15200", $out);
+        $return = $this->_exec("stty -F " . $this->_device . " 15200", $output);
 
         $this->_handle = fopen($this->_device, "r+b");
-        stream_set_blocking($this->_handle, 0);        
+        stream_set_blocking($this->_handle, 0);
     }
 
 
@@ -116,7 +116,7 @@ class Serial {
      * @param string $cmd
      * @param string $out
      */
-    protected function _exec($cmd, &$out = null)
+    protected function _exec($cmd, &$out = NULL)
     {
         $desc = array(
             1 => array("pipe", "w"),
@@ -134,7 +134,7 @@ class Serial {
         $retVal = proc_close($proc);
 
         if (func_num_args() == 2) {
-            $out = array($ret, $err);    
+            $out = array($ret, $err);
         }
         return $retVal;
     }

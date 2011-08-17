@@ -14,10 +14,11 @@ namespace PlugWeb\Driver;
  *
  */
 class Device {
-    protected $_mac = null;
-    protected $_serial = null;
-    protected $_request = null;
-    protected $_response = null;
+
+    protected $_mac      = NULL;
+    protected $_serial   = NULL;
+    protected $_request  = NULL;
+    protected $_response = NULL;
 
     public function __construct($mac) {
         $this->_mac = $mac;
@@ -52,7 +53,7 @@ class Device {
      * @return \PlugWeb\Driver\Serial
      */
     public function getSerial() {
-        if ($this->_serial === null) {
+        if ($this->_serial === NULL) {
             $this->_serial = new \PlugWeb\Driver\Serial('/dev/ttyUSB0');
          }
         return $this->_serial;
@@ -79,7 +80,7 @@ class Device {
      * @return \PlugWeb\Driver\Request
      */
     public function getRequest() {
-        if ($this->_request === null) {
+        if ($this->_request === NULL) {
             $this->_request = new \PlugWeb\Driver\Request();
          }
         return $this->_request;
@@ -106,7 +107,7 @@ class Device {
      * @return \PlugWeb\Driver\Response
      */
     public function getResponse() {
-        if ($this->_response === null) {
+        if ($this->_response === NULL) {
             $this->_response = new \PlugWeb\Driver\Response();
          }
         return $this->_response;
@@ -135,7 +136,7 @@ class Device {
      * @param bool $readString
      * @return array
      */
-    public function sendString($input, $readString = false) {
+    public function sendString($input, $readString = FALSE) {
         $this->getSerial()->sendData($input);
         if ($readString) {
             $data = $this->getSerial()->readData();
@@ -152,7 +153,7 @@ class Device {
      */
     public function initStick() {
         $input = $this->getRequest()->actionInitStick();        
-        return $this->sendString($input, true);
+        return $this->sendString($input, TRUE);
     }
 
 
@@ -163,7 +164,7 @@ class Device {
      */
     public function deviceCalibration() {
         $input = $this->getRequest()->actionDeviceCalibration($this->_mac);
-        return $this->sendString($input, true);
+        return $this->sendString($input, TRUE);
     }
 
 
@@ -174,7 +175,7 @@ class Device {
      */
     public function deviceInfo() {
         $input = $this->getRequest()->actionDeviceInfo($this->_mac);
-        return $this->sendString($input, true);
+        return $this->sendString($input, TRUE);
     }
 
 
@@ -183,23 +184,23 @@ class Device {
      * Reads the device buffer
      * @return array
      */
-    public function deviceBuffer($logAddress = null) {
+    public function deviceBuffer($logAddress = NULL) {
         // Get last log device if none given
-        if ($logAddress === null) {
+        if ($logAddress === NULL) {
             $deviceInfo = $this->deviceInfo();
             if ((!isset($deviceInfo)) || (!isset($deviceInfo['data']))) {
                 return array();
             }
             $logAddress = $deviceInfo['data']['logAddress'];
         }
-        
+
         // Prepare input string
         $input = $this->getRequest()->actionDeviceBuffer(
             $this->_mac,
-            $logAddress 
+            $logAddress
         );
 
-        return  $this->sendString($input, true);
+        return  $this->sendString($input, TRUE);
     }
 
 
@@ -210,7 +211,7 @@ class Device {
      */
     public function clockInfo() {
         $input = $this->getRequest()->actionClockInfo($this->_mac);
-        return $this->sendString($input, true);
+        return $this->sendString($input, TRUE);
     }
 
 
@@ -218,7 +219,7 @@ class Device {
      * 
      * Switches the devices on
      */
-    public function powerSwitch($switchOnOff = false) {
+    public function powerSwitch($switchOnOff = FALSE) {
         $input = $this->getRequest()->actionPowerSwitch($this->_mac, $switchOnOff);
         $this->getSerial()->sendData($input);
     }
@@ -229,7 +230,7 @@ class Device {
      * Alias for enabling the power switch
      */
     public function powerSwitchOn() {
-        return $this->powerSwitch(true);
+        return $this->powerSwitch(TRUE);
     }
 
 
@@ -238,7 +239,7 @@ class Device {
      * Alias for disabling the power switch
      */
     public function powerSwitchOff() {
-        return $this->powerSwitch(false);
+        return $this->powerSwitch(FALSE);
     }
 
 
@@ -250,20 +251,20 @@ class Device {
     public function powerInfo() {
         $input = $this->getRequest()
             ->actionPowerInfo($this->_mac);
-        $out = $this->sendString($input, true);
+        $out = $this->sendString($input, TRUE);
         $calibration = $this->deviceCalibration();
 
         // Add KWH
         $out['calibration'] = $calibration['data'];
         $out['data']['kwh'] = $this->_pulsesToKwh(
-            1, 
-            $calibration['data']['pulsesInterval1'], 
-            $calibration['data']['offRuis'], 
-            $calibration['data']['offTot'], 
-            $calibration['data']['gainA'], 
+            1,
+            $calibration['data']['pulsesInterval1'],
+            $calibration['data']['offRuis'],
+            $calibration['data']['offTot'],
+            $calibration['data']['gainA'],
             $calibration['data']['gainB']
         );
-        
+
         return $out;
     }
 

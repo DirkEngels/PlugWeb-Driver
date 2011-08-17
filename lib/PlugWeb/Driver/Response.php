@@ -24,7 +24,7 @@ class Response {
      * @return array
      */
     public function readString($string) {
-         $responseAction = substr($string, 4, 4);
+        $responseAction = substr($string, 4, 4);
         $string = substr($string, 8);
         switch($responseAction) {
             case '0000':
@@ -114,7 +114,7 @@ class Response {
             'sequenceNumber' => hexdec(substr($string, 0, 4)),
             'macAddress' => substr($string, 14, 6),
             'pulsesInterval1' => $pulses1,
-            'pulsesInterval8' => hexdec(substr($string, 24, 4)),
+            'pulsesInterval8' => $pulses8,
             'pulsesTotal' => hexdec(substr($string, 28, 8)),
             'crcString' => substr($string, 48, 4)
         );
@@ -129,10 +129,6 @@ class Response {
      * @return array
      */
     protected function _processDeviceCalibration($string) {
-//        if (strlen($string)!=56) {
-//            return array('error' => 'Wrong length of Response::Calibration string');
-//        }
-
         // Prepare output data
         $data = array(
             'sequenceNumber' => hexdec(substr($string, 0, 4)),

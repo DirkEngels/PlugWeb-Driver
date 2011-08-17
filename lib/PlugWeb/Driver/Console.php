@@ -15,14 +15,14 @@ namespace PlugWeb\Driver;
  */
 class Console {
 
-    protected $_consoleOpts = null;
+    protected $_consoleOpts = NULL;
 
     /**
      * 
      * Daemon constructor method
      * @param \Zend_Console_Getopt $consoleOpts
      */
-    public function __construct(\Zend_Console_Getopt $consoleOpts = null) {
+    public function __construct(\Zend_Console_Getopt $consoleOpts = NULL) {
         $this->setConsoleOpts($consoleOpts);
     }
 
@@ -34,7 +34,7 @@ class Console {
      */
     public function getConsoleOpts() {
         // Initialize default console options
-        if (is_null($this->_consoleOpts)) {
+        if (is_NULL($this->_consoleOpts)) {
             $this->_consoleOpts = new \Zend_Console_Getopt(
                 array(
                     'mac|m=s'         => 'Mac address of plugwise device',
@@ -53,11 +53,11 @@ class Console {
      * @param Zend_Console_Getopt $consoleOpts
      * @return $this
      */
-    public function setConsoleOpts(Zend_Console_Getopt $consoleOpts = null) {
-        if ($consoleOpts === null) {
+    public function setConsoleOpts(Zend_Console_Getopt $consoleOpts = NULL) {
+        if ($consoleOpts === NULL) {
             $consoleOpts = $this->getConsoleOpts();
         }
-        
+
         // Parse Options
         try {
             $consoleOpts->parse();

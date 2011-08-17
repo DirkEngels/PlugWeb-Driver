@@ -15,14 +15,14 @@ namespace PlugWeb\Driver;
  */
 class Request {
 
-    const MAC_PREFIX = '000D6F0000';
-    const ACTION_STICK_INIT = '000A';
-    const ACTION_POWER_INFO = '0012';
-    const ACTION_POWER_SWITCH = '0017';
-    const ACTION_DEVICE_INFO = '0023'; 
+    const MAC_PREFIX                = '000D6F0000';
+    const ACTION_STICK_INIT         = '000A';
+    const ACTION_POWER_INFO         = '0012';
+    const ACTION_POWER_SWITCH       = '0017';
+    const ACTION_DEVICE_INFO        = '0023';
     const ACTION_DEVICE_CALIBRATION = '0026';
-    const ACTION_DEVICE_BUFFER = '0048';
-    const ACTION_CLOCK_INFO = '003E';
+    const ACTION_DEVICE_BUFFER      = '0048';
+    const ACTION_CLOCK_INFO         = '003E';
 
     /**
      * 
@@ -43,7 +43,7 @@ class Request {
      * @param boolean $onOff
      * @return string
      */
-    public function actionPowerSwitch($mac, $switchOnOff = false) {
+    public function actionPowerSwitch($mac, $switchOnOff = FALSE) {
         $onOff = ($switchOnOff) ? '01' : '00';
 
         // 0017 000D6F0000 729310 01
@@ -62,7 +62,7 @@ class Request {
      * @return string
      */
     public function actionPowerOn($mac) {
-        return $this->actionPowerSwitch($mac, true);
+        return $this->actionPowerSwitch($mac, TRUE);
     }
 
 
@@ -73,7 +73,7 @@ class Request {
      * @return string
      */
     public function actionPowerOff($mac) {
-        return $this->actionPowerSwitch($mac, false);
+        return $this->actionPowerSwitch($mac, FALSE);
     }
 
 
@@ -150,7 +150,7 @@ class Request {
      */
     public function actionClockInfo($mac) {
         // 003E 000D6F0000 729310
-        $str = self::ACTION_CLOCK_INFO . 
+        $str = self::ACTION_CLOCK_INFO .
             self::MAC_PREFIX .
             $mac;
 

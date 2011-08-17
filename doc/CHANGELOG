@@ -6,10 +6,17 @@ Version 0.3
 -----------
 - improved autoloader
 
+
+version 0.2.1
+=============
++ added build.xml
+
+
 version 0.2
-===========
+-----------
 + initial unit tests
 + add test script for single device
+
 
 version 0.1
 -----------

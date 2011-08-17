@@ -18,7 +18,7 @@ class Device {
     protected $_serial = null;
     protected $_request = null;
     protected $_response = null;
-    
+
     public function __construct($mac) {
         $this->_mac = $mac;
     }
@@ -248,7 +248,8 @@ class Device {
      * @return array
      */
     public function powerInfo() {
-        $input = $this->getRequest()->actionPowerInfo($this->_mac);
+        $input = $this->getRequest()
+            ->actionPowerInfo($this->_mac);
         $out = $this->sendString($input, true);
         $calibration = $this->deviceCalibration();
 

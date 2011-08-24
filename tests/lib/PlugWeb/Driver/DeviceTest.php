@@ -63,7 +63,6 @@ class DeviceTest extends \PHPUnit_Framework_Testcase {
         $this->assertEquals($response, $this->_device->getResponse());
     }
 
-
     public function testPowerSwitchOn() {
         $serial = $this->getMock('PlugWeb\Driver\Serial', array('powerSwitchOn'), array('123456'));
         $serial->expects($this->once())

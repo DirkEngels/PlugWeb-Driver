@@ -6,7 +6,7 @@ include('bootstrap.php');
 $mac = '76CE03';
 $mac = '729310';
 
-$device = new \PlugWeb\Driver\Device($mac);
+$device = new \PlugWeb\Driver\Device($mac, '/dev/ttyUSB0');
 #echo var_dump($device);
 $device->initStick();
 while (true) {

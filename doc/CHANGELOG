@@ -7,8 +7,13 @@ Version 0.3
 - improved autoloader
 
 
+version 0.2.2 (24 aug 2011)
+===========================
++ added device file option (default: /dev/ttyUSB0)
+
+
 version 0.2.1
-=============
+-------------
 + added build.xml
 
 

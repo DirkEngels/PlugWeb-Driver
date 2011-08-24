@@ -24,7 +24,7 @@ devices on/of or request device information.
   sudo ./bin/plugweb-driver -m '729310' -a 'switch-off'
 
   sudo ./bin/plugweb-driver -m '729310' -a 'info'
-  sudo ./bin/plugweb-driver -m '729310' -a 'status'
+  sudo ./bin/plugweb-driver -d /dev/ttyUSB0 -m '729310' -a 'status'
 
 
 PHP API Usage
@@ -32,7 +32,8 @@ PHP API Usage
 See the example below to send commands to a PlugWise device from PHP.
 
   $mac = '729310';
-  $device = new \PlugWeb\Driver\Device($mac);
+  $device = '/dev/ttyUSB0';
+  $device = new \PlugWeb\Driver\Device($mac, $device);
   $device->switchOn();
   $deviceInfo = $device->deviceInfo();
   $powerInfo = $device->powerInfo();

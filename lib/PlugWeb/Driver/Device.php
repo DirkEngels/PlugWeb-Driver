@@ -50,6 +50,26 @@ class Device {
 
 
     /**
+     * Gets the device file (/dev/ttyUSB0)
+     * @return string
+     */
+    public function getDevice() {
+        return $this->_device;
+    }
+
+
+    /**
+     * Sets the device file (/dev/ttyUSB0)
+     * @param $device
+     * @return $this
+     */
+    public function setDevice($device) {
+        $this->_device = $device;
+        return $this;
+    }
+
+
+    /**
      * 
      * Gets or initailizes the serial controller object
      * @return \PlugWeb\Driver\Serial

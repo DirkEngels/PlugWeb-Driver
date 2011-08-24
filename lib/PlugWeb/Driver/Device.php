@@ -116,7 +116,7 @@ class Device {
      * @return \PlugWeb\Driver\Device
      */
     public function setRequest($request) {
-        if (is_subclass_of($request, '\PlugWeb\Driver\Request')) {
+        if ($request instanceof \PlugWeb\Driver\Request) {
             $this->_request = $request;
         }
         return $this;
@@ -143,7 +143,7 @@ class Device {
      * @return \PlugWeb\Driver\Device
      */
     public function setResponse($response) {
-        if (is_subclass_of($response, '\PlugWeb\Driver\Response')) {
+        if ($response instanceof \PlugWeb\Driver\Response) {
             $this->_response = $response;
         }
         return $this;

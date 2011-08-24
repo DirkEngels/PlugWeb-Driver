@@ -23,7 +23,7 @@ class Device {
 
     public function __construct($mac, $device = '/dev/ttyUSB0') {
         $this->_mac = $mac;
-	$this->_device = $device;
+        $this->_device = $device;
     }
 
 

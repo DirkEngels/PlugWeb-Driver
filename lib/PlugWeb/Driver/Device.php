@@ -17,11 +17,13 @@ class Device {
 
     protected $_mac      = NULL;
     protected $_serial   = NULL;
+    protected $_device   = NULL;
     protected $_request  = NULL;
     protected $_response = NULL;
 
-    public function __construct($mac) {
+    public function __construct($mac, $device = '/dev/ttyUSB0') {
         $this->_mac = $mac;
+	$this->_device = $device;
     }
 
 
@@ -54,7 +56,7 @@ class Device {
      */
     public function getSerial() {
         if ($this->_serial === NULL) {
-            $this->_serial = new \PlugWeb\Driver\Serial('/dev/ttyUSB0');
+            $this->_serial = new \PlugWeb\Driver\Serial($this->_device);
          }
         return $this->_serial;
     }

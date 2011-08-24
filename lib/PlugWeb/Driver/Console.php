@@ -37,6 +37,7 @@ class Console {
         if (is_NULL($this->_consoleOpts)) {
             $this->_consoleOpts = new \Zend_Console_Getopt(
                 array(
+                    'device|d=s'         => 'Device file (/dev/ttyUSB0)',
                     'mac|m=s'         => 'Mac address of plugwise device',
                     'action|a=s'    => 'Action switch-on, switch-off, info, status',
                     'help|h'        => 'Show help message (this message)',
@@ -78,8 +79,9 @@ class Console {
         // Set action
         $mac = $this->_consoleOpts->getOption('mac');
         $action = $this->_consoleOpts->getOption('action');
+        $device = $this->_consoleOpts->getOption('device', '/dev/ttyUSB0');
 
-        $device = new \PlugWeb\Driver\Device($mac);
+        $device = new \PlugWeb\Driver\Device($mac, $device);
         $data = array();
         switch($action) {
             case 'switch-on':

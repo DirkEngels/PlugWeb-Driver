@@ -3,12 +3,15 @@
 
 include('bootstrap.php');
 
+// Example mac addresses
 $mac = '76CE03';
 $mac = '729310';
 
+// Initialize stick
 $device = new \PlugWeb\Driver\Device($mac, '/dev/ttyUSB0');
-#echo var_dump($device);
 $device->initStick();
+
+// Keep switching the light on and off with pauses of 3 seconds
 while (true) {
 	$device->powerSwitch(true);
 	sleep(3);

@@ -23,7 +23,7 @@ class Device {
 
     public function __construct($mac, $device = '/dev/ttyUSB0') {
         $this->_mac = $mac;
-	$this->_device = $device;
+        $this->_device = $device;
     }
 
 
@@ -45,6 +45,26 @@ class Device {
      */
     public function setMac($mac) {
         $this->_mac = $mac;
+        return $this;
+    }
+
+
+    /**
+     * Gets the device file (/dev/ttyUSB0)
+     * @return string
+     */
+    public function getDevice() {
+        return $this->_device;
+    }
+
+
+    /**
+     * Sets the device file (/dev/ttyUSB0)
+     * @param $device
+     * @return $this
+     */
+    public function setDevice($device) {
+        $this->_device = $device;
         return $this;
     }
 
@@ -96,7 +116,7 @@ class Device {
      * @return \PlugWeb\Driver\Device
      */
     public function setRequest($request) {
-        if (is_subclass_of($request, '\PlugWeb\Driver\Request')) {
+        if ($request instanceof \PlugWeb\Driver\Request) {
             $this->_request = $request;
         }
         return $this;
@@ -123,7 +143,7 @@ class Device {
      * @return \PlugWeb\Driver\Device
      */
     public function setResponse($response) {
-        if (is_subclass_of($response, '\PlugWeb\Driver\Response')) {
+        if ($response instanceof \PlugWeb\Driver\Response) {
             $this->_response = $response;
         }
         return $this;

@@ -5,6 +5,7 @@ CHANGELOG
 Version 0.3
 -----------
 - improved autoloader
+- clean up bin directory
 
 
 version 0.2.2 (24 aug 2011)

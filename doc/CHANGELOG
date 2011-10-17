@@ -2,14 +2,14 @@
 CHANGELOG
 =========
 
-Version 0.3
------------
-- improved autoloader
-- clean up bin directory
+Version 0.3 (17 okt 2011)
+=========================
++ improved autoloader
++ clean up bin directory
 
 
 version 0.2.2 (24 aug 2011)
-===========================
+---------------------------
 + added device file option (default: /dev/ttyUSB0)
 
 
